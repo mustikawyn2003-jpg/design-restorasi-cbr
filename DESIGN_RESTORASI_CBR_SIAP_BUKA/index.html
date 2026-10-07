@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DESIGN RESTORASI CBR</title>
+<style>
+body{margin:0;background:#111;color:white;font-family:Arial;text-align:center}
+h1{padding:20px;letter-spacing:5px}
+#box{height:600px;display:flex;align-items:center;justify-content:center;cursor:grab}
+#motor{max-width:85%;max-height:520px}
+</style>
+</head>
+<body>
+<h1>DESIGN RESTORASI CBR</h1>
+<div id="box"><img id="motor" src="337.png"></div>
+<p>Geser mouse kiri kanan untuk melihat 360°</p>
+<script>
+let imgs=["337.png","338.png","339.png","340.png","341.png","342.png","343.png","344.png"];
+let i=0,start=0,down=false;
+let m=document.getElementById("motor"),b=document.getElementById("box");
+b.onmousedown=e=>{down=true;start=e.clientX};
+window.onmouseup=()=>down=false;
+window.onmousemove=e=>{
+ if(!down)return;
+ if(Math.abs(e.clientX-start)>25){
+  i=(i+(e.clientX>start?1:-1)+imgs.length)%imgs.length;
+  m.src=imgs[i]; start=e.clientX;
+ }
+};
+</script>
+</body>
+</html>
